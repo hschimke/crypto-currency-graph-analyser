@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA26C77B190EDD3F004F8C1B /* CurrencySourcePrefixedNameMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA26C779190EDD3F004F8C1B /* CurrencySourcePrefixedNameMaker.cpp */; };
 		BA5967D3190D5C8A00F78150 /* PreludeIOCurrencySource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA5967D1190D5C8A00F78150 /* PreludeIOCurrencySource.cpp */; };
 		BAB2B394190348AD00AE2124 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB2B393190348AD00AE2124 /* main.cpp */; };
 		BAB2B396190348AD00AE2124 /* CryptoCurrencyGraphAnalyser.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAB2B395190348AD00AE2124 /* CryptoCurrencyGraphAnalyser.1 */; };
@@ -31,6 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BA26C779190EDD3F004F8C1B /* CurrencySourcePrefixedNameMaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CurrencySourcePrefixedNameMaker.cpp; sourceTree = "<group>"; };
+		BA26C77A190EDD3F004F8C1B /* CurrencySourcePrefixedNameMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencySourcePrefixedNameMaker.h; sourceTree = "<group>"; };
 		BA5967D1190D5C8A00F78150 /* PreludeIOCurrencySource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PreludeIOCurrencySource.cpp; sourceTree = "<group>"; };
 		BA5967D2190D5C8A00F78150 /* PreludeIOCurrencySource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreludeIOCurrencySource.h; sourceTree = "<group>"; };
 		BAB2B390190348AD00AE2124 /* CryptoCurrencyGraphAnalyser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CryptoCurrencyGraphAnalyser; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +104,8 @@
 				BAB2B3B219042BAE00AE2124 /* StaticCurrencySource.h */,
 				BA5967D1190D5C8A00F78150 /* PreludeIOCurrencySource.cpp */,
 				BA5967D2190D5C8A00F78150 /* PreludeIOCurrencySource.h */,
+				BA26C779190EDD3F004F8C1B /* CurrencySourcePrefixedNameMaker.cpp */,
+				BA26C77A190EDD3F004F8C1B /* CurrencySourcePrefixedNameMaker.h */,
 			);
 			name = CryptoCurrencySourceImplementations;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAB2B3A719034B1900AE2124 /* CryptoCurrencyGraphNode.cpp in Sources */,
+				BA26C77B190EDD3F004F8C1B /* CurrencySourcePrefixedNameMaker.cpp in Sources */,
 				BAB2B3A319034AF600AE2124 /* CryptoCurrencyGraph.cpp in Sources */,
 				BAB2B3B019034ECF00AE2124 /* CryptsyCurrencySource.cpp in Sources */,
 				BA5967D3190D5C8A00F78150 /* PreludeIOCurrencySource.cpp in Sources */,

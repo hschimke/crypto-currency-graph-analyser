@@ -20,8 +20,8 @@
 //#define START_CUR "A"
 //#define END_CUR "D"
 
-#define START_CUR "BTC"
-#define END_CUR "DOGE"
+#define START_CUR "DOGE"
+#define END_CUR "BTC"
 
 int main(int argc, const char * argv[])
 {
@@ -44,7 +44,7 @@ int main(int argc, const char * argv[])
     double best = graph.getBestConversionCost(START_CUR, END_CUR);
     double simple =graph.getSimpleConversionCost(START_CUR, END_CUR);
     
-    double start_currency = 1;
+    double start_currency = 15000;
     
     std::cout << std::setprecision(10);
     std::cout << std::fixed;

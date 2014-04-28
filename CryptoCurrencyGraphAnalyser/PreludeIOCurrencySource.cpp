@@ -34,7 +34,7 @@ void PreludeIOCurrencySource::addPairingsFromJSON(CryptoCurrencyGraph &graph, st
     std::istringstream dins (data);
     boost::property_tree::read_json(dins, pt);
     
-    std::string currency_endpoing = pt.get<std::string>("from");
+    std::string currency_endpoint = pt.get<std::string>("from");
     
     for( boost::property_tree::ptree::value_type &v: pt.get_child("pairings") ){
         double link_cost;
@@ -45,9 +45,13 @@ void PreludeIOCurrencySource::addPairingsFromJSON(CryptoCurrencyGraph &graph, st
             link_cost =v.second.get<double>("last_trade.rate");
             pair = v.second.get<std::string>("pair");
             
-            graph.addLink(name_prefix+currency_endpoing, name_prefix+pair, (1/link_cost));
+            graph.addLink(this->getPrefixedName(currency_endpoint, name_prefix),
+                          this->getPrefixedName(pair, name_prefix),
+                          (1/link_cost));
             
-            graph.addLink(name_prefix+pair, name_prefix+currency_endpoing, link_cost);
+            graph.addLink(this->getPrefixedName(pair, name_prefix),
+                          this->getPrefixedName(currency_endpoint, name_prefix),
+                          link_cost);
         }
     }
 }

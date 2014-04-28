@@ -10,8 +10,9 @@
 #define __CryptoCurrencyGraphAnalyser__StaticCurrencySource__
 
 #include "ICryptoCurrencySourceParser.h"
+#include "CurrencySourcePrefixedNameMaker.h"
 
-class StaticCurrencySource : public ICryptoCurrencySourceParser {
+class StaticCurrencySource : public ICryptoCurrencySourceParser, public CurrencySourcePrefixedNameMaker {
 public:
     virtual ~StaticCurrencySource();
     StaticCurrencySource();

@@ -34,23 +34,35 @@ void StaticCurrencySource::parseSource(CryptoCurrencyGraph &graph, std::string n
      CryptoCurrencyGraphNode& LTC_node=    graph.getOrAddNodeByName("LTC");
      CryptoCurrencyGraphNode& RDD_node=    graph.getOrAddNodeByName("RDD");*/
     
-    graph.addLink(name_prefix+"BTC", name_prefix+"DOGE", 0.5);
-    graph.addLink(name_prefix+"DOGE", name_prefix+"BTC", 0.5);
-    graph.addLink(name_prefix+"BTC", name_prefix+"RDD", 0.05);
-    graph.addLink(name_prefix+"BTC", name_prefix+"LTC", 0.75);
-    graph.addLink(name_prefix+"LTC", name_prefix+"BTC", 0.75);
-    graph.addLink(name_prefix+"DOGE", name_prefix+"LTC", 1.15);
-    graph.addLink(name_prefix+"LTC", name_prefix+"RDD", 0.005);
-    graph.addLink(name_prefix+"DOGE", name_prefix+"RDD", 0.75);
-    graph.addLink(name_prefix+"BTC", name_prefix+"FKE", 0.9);
-    graph.addLink(name_prefix+"FKE", name_prefix+"LTC", 0.11);
-    
-    graph.addLink(name_prefix+"A", name_prefix+"B", 1);
-    graph.addLink(name_prefix+"A", name_prefix+"C", 1);
-    graph.addLink(name_prefix+"B", name_prefix+"C", 1);
-    graph.addLink(name_prefix+"B", name_prefix+"D", 1);
-    graph.addLink(name_prefix+"C", name_prefix+"A", 1);
-    graph.addLink(name_prefix+"C", name_prefix+"D", 1);
-    
+    graph.addLink(this->getPrefixedName("BTC", name_prefix),
+                  this->getPrefixedName("DOGE", name_prefix),
+                  0.5);
+    graph.addLink(this->getPrefixedName("DOGE", name_prefix),
+                  this->getPrefixedName("BTC", name_prefix),
+                  0.5);
+    graph.addLink(this->getPrefixedName("BTC", name_prefix),
+                  this->getPrefixedName("RDD", name_prefix),
+                  0.05);
+    graph.addLink(this->getPrefixedName("BTC", name_prefix),
+                  this->getPrefixedName("LTC", name_prefix),
+                  0.75);
+    graph.addLink(this->getPrefixedName("LTC", name_prefix),
+                  this->getPrefixedName("BTC", name_prefix),
+                  0.75);
+    graph.addLink(this->getPrefixedName("DOGE", name_prefix),
+                  this->getPrefixedName("LTC", name_prefix),
+                  1.15);
+    graph.addLink(this->getPrefixedName("LTC", name_prefix),
+                  this->getPrefixedName("RDD", name_prefix),
+                  0.005);
+    graph.addLink(this->getPrefixedName("DOGE", name_prefix),
+                  this->getPrefixedName("RDD", name_prefix),
+                  0.75);
+    graph.addLink(this->getPrefixedName("BTC", name_prefix),
+                  this->getPrefixedName("FKE", name_prefix),
+                  0.9);
+    graph.addLink(this->getPrefixedName("FKE", name_prefix),
+                  this->getPrefixedName("LTC", name_prefix),
+                  0.11);
     return;
 }

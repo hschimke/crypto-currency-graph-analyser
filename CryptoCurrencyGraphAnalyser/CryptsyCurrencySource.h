@@ -10,6 +10,7 @@
 #define __CryptoCurrencyGraphAnalyser__CryptsyCurrencySource__
 
 #include "ICryptoCurrencySourceParser.h"
+#include "CurrencySourcePrefixedNameMaker.h"
 #include <iostream>
 #include <string>
 #include <curl/curl.h>
@@ -19,7 +20,7 @@
 
 #define CRYPTSY_URI "http://pubapi.cryptsy.com/api.php?method=marketdatav2 "
 
-class CryptsyCurrencySource : public ICryptoCurrencySourceParser {
+class CryptsyCurrencySource : public ICryptoCurrencySourceParser, public CurrencySourcePrefixedNameMaker {
 public:
     virtual ~CryptsyCurrencySource();
     CryptsyCurrencySource();

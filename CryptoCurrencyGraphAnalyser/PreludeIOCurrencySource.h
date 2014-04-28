@@ -10,6 +10,7 @@
 #define __CryptoCurrencyGraphAnalyser__PreludeIOCurrencySource__
 
 #include "ICryptoCurrencySourceParser.h"
+#include "CurrencySourcePrefixedNameMaker.h"
 #include <iostream>
 #include <string>
 #include <curl/curl.h>
@@ -20,7 +21,7 @@
 #define PRELUDE_IO_BTC_PAIRING_API_URI "https://api.prelude.io/pairings/btc"
 #define PRELUDE_IO_USD_PAIRING_API_URI "https://api.prelude.io/pairings/usd"
 
-class PreludeIOCurrencySource : public ICryptoCurrencySourceParser {
+class PreludeIOCurrencySource : public ICryptoCurrencySourceParser, public CurrencySourcePrefixedNameMaker {
 public:
     virtual ~PreludeIOCurrencySource();
     PreludeIOCurrencySource();
