@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA5967D3190D5C8A00F78150 /* PreludeIOCurrencySource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA5967D1190D5C8A00F78150 /* PreludeIOCurrencySource.cpp */; };
 		BAB2B394190348AD00AE2124 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB2B393190348AD00AE2124 /* main.cpp */; };
 		BAB2B396190348AD00AE2124 /* CryptoCurrencyGraphAnalyser.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAB2B395190348AD00AE2124 /* CryptoCurrencyGraphAnalyser.1 */; };
+		BAB2B39D1903497B00AE2124 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB2B39C1903497B00AE2124 /* libcurl.dylib */; };
+		BAB2B3A319034AF600AE2124 /* CryptoCurrencyGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB2B3A119034AF600AE2124 /* CryptoCurrencyGraph.cpp */; };
+		BAB2B3A719034B1900AE2124 /* CryptoCurrencyGraphNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB2B3A519034B1900AE2124 /* CryptoCurrencyGraphNode.cpp */; };
+		BAB2B3B019034ECF00AE2124 /* CryptsyCurrencySource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB2B3AE19034ECF00AE2124 /* CryptsyCurrencySource.cpp */; };
+		BAB2B3B319042BAE00AE2124 /* StaticCurrencySource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB2B3B119042BAE00AE2124 /* StaticCurrencySource.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +31,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BA5967D1190D5C8A00F78150 /* PreludeIOCurrencySource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PreludeIOCurrencySource.cpp; sourceTree = "<group>"; };
+		BA5967D2190D5C8A00F78150 /* PreludeIOCurrencySource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreludeIOCurrencySource.h; sourceTree = "<group>"; };
 		BAB2B390190348AD00AE2124 /* CryptoCurrencyGraphAnalyser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CryptoCurrencyGraphAnalyser; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB2B393190348AD00AE2124 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		BAB2B395190348AD00AE2124 /* CryptoCurrencyGraphAnalyser.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = CryptoCurrencyGraphAnalyser.1; sourceTree = "<group>"; };
+		BAB2B39C1903497B00AE2124 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
+		BAB2B3A119034AF600AE2124 /* CryptoCurrencyGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CryptoCurrencyGraph.cpp; sourceTree = "<group>"; };
+		BAB2B3A219034AF600AE2124 /* CryptoCurrencyGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoCurrencyGraph.h; sourceTree = "<group>"; };
+		BAB2B3A519034B1900AE2124 /* CryptoCurrencyGraphNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CryptoCurrencyGraphNode.cpp; sourceTree = "<group>"; };
+		BAB2B3A619034B1900AE2124 /* CryptoCurrencyGraphNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoCurrencyGraphNode.h; sourceTree = "<group>"; };
+		BAB2B3AC19034E9E00AE2124 /* ICryptoCurrencySourceParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICryptoCurrencySourceParser.h; sourceTree = "<group>"; };
+		BAB2B3AE19034ECF00AE2124 /* CryptsyCurrencySource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CryptsyCurrencySource.cpp; sourceTree = "<group>"; };
+		BAB2B3AF19034ECF00AE2124 /* CryptsyCurrencySource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptsyCurrencySource.h; sourceTree = "<group>"; };
+		BAB2B3B119042BAE00AE2124 /* StaticCurrencySource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StaticCurrencySource.cpp; sourceTree = "<group>"; };
+		BAB2B3B219042BAE00AE2124 /* StaticCurrencySource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticCurrencySource.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAB2B39D1903497B00AE2124 /* libcurl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +63,7 @@
 		BAB2B387190348AD00AE2124 = {
 			isa = PBXGroup;
 			children = (
+				BAB2B39C1903497B00AE2124 /* libcurl.dylib */,
 				BAB2B392190348AD00AE2124 /* CryptoCurrencyGraphAnalyser */,
 				BAB2B391190348AD00AE2124 /* Products */,
 			);
@@ -60,10 +80,29 @@
 		BAB2B392190348AD00AE2124 /* CryptoCurrencyGraphAnalyser */ = {
 			isa = PBXGroup;
 			children = (
+				BAB2B3AD19034EA500AE2124 /* CryptoCurrencySourceImplementations */,
 				BAB2B393190348AD00AE2124 /* main.cpp */,
 				BAB2B395190348AD00AE2124 /* CryptoCurrencyGraphAnalyser.1 */,
+				BAB2B3A119034AF600AE2124 /* CryptoCurrencyGraph.cpp */,
+				BAB2B3A219034AF600AE2124 /* CryptoCurrencyGraph.h */,
+				BAB2B3A519034B1900AE2124 /* CryptoCurrencyGraphNode.cpp */,
+				BAB2B3A619034B1900AE2124 /* CryptoCurrencyGraphNode.h */,
+				BAB2B3AC19034E9E00AE2124 /* ICryptoCurrencySourceParser.h */,
 			);
 			path = CryptoCurrencyGraphAnalyser;
+			sourceTree = "<group>";
+		};
+		BAB2B3AD19034EA500AE2124 /* CryptoCurrencySourceImplementations */ = {
+			isa = PBXGroup;
+			children = (
+				BAB2B3AE19034ECF00AE2124 /* CryptsyCurrencySource.cpp */,
+				BAB2B3AF19034ECF00AE2124 /* CryptsyCurrencySource.h */,
+				BAB2B3B119042BAE00AE2124 /* StaticCurrencySource.cpp */,
+				BAB2B3B219042BAE00AE2124 /* StaticCurrencySource.h */,
+				BA5967D1190D5C8A00F78150 /* PreludeIOCurrencySource.cpp */,
+				BA5967D2190D5C8A00F78150 /* PreludeIOCurrencySource.h */,
+			);
+			name = CryptoCurrencySourceImplementations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,7 +156,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAB2B3A719034B1900AE2124 /* CryptoCurrencyGraphNode.cpp in Sources */,
+				BAB2B3A319034AF600AE2124 /* CryptoCurrencyGraph.cpp in Sources */,
+				BAB2B3B019034ECF00AE2124 /* CryptsyCurrencySource.cpp in Sources */,
+				BA5967D3190D5C8A00F78150 /* PreludeIOCurrencySource.cpp in Sources */,
 				BAB2B394190348AD00AE2124 /* main.cpp in Sources */,
+				BAB2B3B319042BAE00AE2124 /* StaticCurrencySource.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +241,12 @@
 		BAB2B39A190348AD00AE2124 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Users/henry/sandbox/boost_1_55_0/stage/include,
+				);
+				LIBRARY_SEARCH_PATHS = /Users/henry/sandbox/boost_1_55_0/stage/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -204,6 +254,12 @@
 		BAB2B39B190348AD00AE2124 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Users/henry/sandbox/boost_1_55_0/stage/include,
+				);
+				LIBRARY_SEARCH_PATHS = /Users/henry/sandbox/boost_1_55_0/stage/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -227,6 +283,7 @@
 				BAB2B39B190348AD00AE2124 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
