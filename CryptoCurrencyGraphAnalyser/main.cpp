@@ -21,19 +21,23 @@
 //#define END_CUR "D"
 
 #define START_CUR "BTC"
-#define END_CUR "USD"
+#define END_CUR "DOGE"
 
 int main(int argc, const char * argv[])
 {
     std::cout << "Program Start" << std::endl;
     
     ICryptoCurrencySourceParser *source_parser;
+    //ICryptoCurrencySourceParser *secondary_source_parser;
     
-//    source_parser = new CryptsyCurrencySource();
+    //secondary_source_parser = new CryptsyCurrencySource();
 //        source_parser = new StaticCurrencySource();
     source_parser = new PreludeIOCurrencySource();
     
     CryptoCurrencyGraph graph = CryptoCurrencyGraph(0.01);
+    
+    //source_parser->parseSource(graph, "P:");
+    //secondary_source_parser->parseSource(graph, "C:");
     
     source_parser->parseSource(graph);
     
@@ -49,6 +53,7 @@ int main(int argc, const char * argv[])
     std::cout << "Simple Conversion: " << simple << " :: " <<start_currency << "->" << (start_currency*simple) << std::endl;
     
     delete source_parser;
+    //delete secondary_source_parser;
     
     return 0;
 }
