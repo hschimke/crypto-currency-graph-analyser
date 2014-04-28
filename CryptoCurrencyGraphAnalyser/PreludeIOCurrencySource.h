@@ -25,6 +25,7 @@ public:
     virtual ~PreludeIOCurrencySource();
     PreludeIOCurrencySource();
     virtual void parseSource(CryptoCurrencyGraph &graph);
+    virtual void parseSource(CryptoCurrencyGraph &graph, std::string name_prefix);
 private:
     //std::string BTC_callback_write_data;
     //std::string USD_callback_write_data;
@@ -33,7 +34,7 @@ private:
     std::string getUSDStringData();
     
     static size_t curlWriter(char *data, size_t size, size_t nmemb, std::string *buffer);
-    void addPairingsFromJSON( CryptoCurrencyGraph& graph, std::string data );
+    void addPairingsFromJSON( CryptoCurrencyGraph& graph, std::string data, std::string name_prefix );
 };
 
 #endif /* defined(__CryptoCurrencyGraphAnalyser__PreludeIOCurrencySource__) */

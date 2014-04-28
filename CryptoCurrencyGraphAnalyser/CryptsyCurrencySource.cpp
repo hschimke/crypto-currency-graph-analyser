@@ -12,11 +12,13 @@ CryptsyCurrencySource::CryptsyCurrencySource(){
     this->curl_callback_write_data = std::string();
 }
 
-CryptsyCurrencySource::~CryptsyCurrencySource(){
-    
-}
+CryptsyCurrencySource::~CryptsyCurrencySource(){}
 
 void CryptsyCurrencySource::parseSource(CryptoCurrencyGraph &graph){
+    this->parseSource(graph, EMPTY_CRYPTOCURRENCY_NAME_PREFIX);
+}
+
+void CryptsyCurrencySource::parseSource(CryptoCurrencyGraph &graph, std::string name_prefix){
     CURL* curl; //our curl object
     
     curl_global_init(CURL_GLOBAL_ALL);
@@ -47,9 +49,9 @@ void CryptsyCurrencySource::parseSource(CryptoCurrencyGraph &graph){
         
         link_cost =pt.get<double>("return.markets." + std::string(v.first.data()) + ".lasttradeprice");
         
-        graph.addLink(dg.substr(p+1),dg.substr(0,p), link_cost);
+        graph.addLink(name_prefix+dg.substr(p+1),name_prefix+dg.substr(0,p), link_cost);
         
-        graph.addLink(dg.substr(0,p), dg.substr(p+1), (1/link_cost));
+        graph.addLink(name_prefix+dg.substr(0,p), name_prefix+dg.substr(p+1), (1/link_cost));
     }
     
     return;

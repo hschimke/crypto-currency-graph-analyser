@@ -11,10 +11,13 @@
 
 #include "CryptoCurrencyGraph.h"
 
+#define EMPTY_CRYPTOCURRENCY_NAME_PREFIX ""
+
 class ICryptoCurrencySourceParser{
 public:
     virtual ~ICryptoCurrencySourceParser() {};
     virtual void parseSource(CryptoCurrencyGraph &graph) = 0;
+    virtual void parseSource(CryptoCurrencyGraph &graph, std::string name_prefix) = 0;
 };
 
 

@@ -24,6 +24,7 @@ public:
     virtual ~CryptsyCurrencySource();
     CryptsyCurrencySource();
     virtual void parseSource(CryptoCurrencyGraph &graph);
+    virtual void parseSource(CryptoCurrencyGraph &graph, std::string name_prefix);
 private:
     std::string curl_callback_write_data;
     
