@@ -21,7 +21,7 @@
 //#define END_CUR "D"
 
 #define START_CUR "DOGE"
-#define END_CUR "BTC"
+#define END_CUR "USD"
 
 int main(int argc, const char * argv[])
 {
