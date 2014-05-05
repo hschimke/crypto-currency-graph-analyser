@@ -51,11 +51,11 @@ void CryptsyCurrencySource::parseSource(CryptoCurrencyGraph &graph, std::string 
         
         graph.addLink(this->getPrefixedName(dg.substr(p+1), name_prefix),
                       this->getPrefixedName(dg.substr(0,p), name_prefix),
-                      link_cost);
+                      (1/link_cost));
         
         graph.addLink(this->getPrefixedName(dg.substr(0,p), name_prefix),
                       this->getPrefixedName(dg.substr(p+1), name_prefix),
-                      (1/link_cost));
+                      link_cost);
     }
     
     return;
