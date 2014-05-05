@@ -21,14 +21,16 @@
 //#define START_CUR "A"
 //#define END_CUR "D"
 
-#define START_CUR "RDD"
+#define START_CUR "DOGE"
 #define END_CUR "BTC"
+#define START_CURRENCY_QUANTITY 20000
+#define CURRENCY_CONVERSION_FEE 0.01
 
 typedef std::unique_ptr<ICryptoCurrencySourceParser> ICryptoCurrencySourceParserUPtr;
 
 int main(int argc, const char * argv[])
 {
-    std::cout << "Program Start" << std::endl;
+    std::cout << "Beginning Examination of converting " << START_CURRENCY_QUANTITY << " " << START_CUR << " into " << END_CUR << " at a step fee of " << CURRENCY_CONVERSION_FEE*100 << "%" << std::endl << std::endl;
     
     ICryptoCurrencySourceParserUPtr source_parser;
     //ICryptoCurrencySourceParserUPtr secondary_source_parser;
@@ -37,7 +39,7 @@ int main(int argc, const char * argv[])
     //source_parser = ICryptoCurrencySourceParserUPtr( new StaticCurrencySource() );
     source_parser = ICryptoCurrencySourceParserUPtr( new PreludeIOCurrencySource() );
     
-    CryptoCurrencyGraph graph = CryptoCurrencyGraph(0.01);
+    CryptoCurrencyGraph graph = CryptoCurrencyGraph(CURRENCY_CONVERSION_FEE);
     
     //source_parser->parseSource(graph, "P:");
     //secondary_source_parser->parseSource(graph, "C:");
@@ -47,7 +49,7 @@ int main(int argc, const char * argv[])
     double best = graph.getBestConversionCost(START_CUR, END_CUR);
     double simple =graph.getSimpleConversionCost(START_CUR, END_CUR);
     
-    double start_currency = 50000;
+    double start_currency = START_CURRENCY_QUANTITY;
     
     std::cout << std::setprecision(10);
     std::cout << std::fixed;

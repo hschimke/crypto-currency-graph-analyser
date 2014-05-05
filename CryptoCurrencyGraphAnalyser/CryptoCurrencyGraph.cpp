@@ -25,14 +25,14 @@ CryptoCurrencyGraph::~CryptoCurrencyGraph(){
                   });
 }
 
-bool CryptoCurrencyGraph::addNode(std::string node_name){
+void CryptoCurrencyGraph::addNode(std::string node_name){
     CryptoCurrencyGraphNodeSPtr node = this->getOrAddNodeByName(node_name);
     
     if(this->data_set.find(node->getName()) == this->data_set.end()){
         this->data_set[node->getName()] = node;
     }
     
-    return true;
+    return;
 }
 
 CryptoCurrencyGraphNodeSPtr CryptoCurrencyGraph::getOrAddNodeByName(std::string node_name){
@@ -116,8 +116,8 @@ double CryptoCurrencyGraph::getSimpleConversionCost(std::string start, std::stri
     return link_cost - (link_cost * this->transaction_fee);
 }
 
-bool CryptoCurrencyGraph::addLink(std::string source_node_name, std::string target_node_name, double cost){
+void CryptoCurrencyGraph::addLink(std::string source_node_name, std::string target_node_name, double cost){
     this->getOrAddNodeByName(source_node_name)->addLink(target_node_name, cost);
     
-    return true;
+    return;
 }

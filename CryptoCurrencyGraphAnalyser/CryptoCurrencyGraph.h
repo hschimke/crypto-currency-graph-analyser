@@ -32,8 +32,8 @@ public:
     CryptoCurrencyGraph();
     CryptoCurrencyGraph(double tf);
     virtual ~CryptoCurrencyGraph();
-    virtual bool addNode(std::string node_name);
-    virtual bool addLink(std::string source_node_name, std::string target_node_name, double cost);
+    virtual void addNode(std::string node_name);
+    virtual void addLink(std::string source_node_name, std::string target_node_name, double cost);
     
     virtual double getSimpleConversionCost( std::string start, std::string end);
     virtual double getBestConversionCost(std::string start, std::string end);
