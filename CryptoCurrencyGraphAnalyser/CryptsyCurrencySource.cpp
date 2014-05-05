@@ -45,17 +45,17 @@ void CryptsyCurrencySource::parseSource(CryptoCurrencyGraph &graph, std::string 
         std::string dg = std::string(v.first.data());
         size_t p = dg.find("/");
 
-        double link_cost;
+        double link_rate;
         
-        link_cost =pt.get<double>("return.markets." + std::string(v.first.data()) + ".lasttradeprice");
+        link_rate =pt.get<double>("return.markets." + std::string(v.first.data()) + ".lasttradeprice");
         
         graph.addLink(this->getPrefixedName(dg.substr(p+1), name_prefix),
                       this->getPrefixedName(dg.substr(0,p), name_prefix),
-                      (1/link_cost));
+                      (1/link_rate));
         
         graph.addLink(this->getPrefixedName(dg.substr(0,p), name_prefix),
                       this->getPrefixedName(dg.substr(p+1), name_prefix),
-                      link_cost);
+                      link_rate);
     }
     
     return;
