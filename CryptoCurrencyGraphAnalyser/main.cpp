@@ -13,6 +13,7 @@
 #include "StaticCurrencySource.h"
 #include "PreludeIOCurrencySource.h"
 #include <iomanip>
+#include <memory>
 
 //#define START_CUR "BTC"
 //#define END_CUR "RDD"
@@ -20,19 +21,19 @@
 //#define START_CUR "A"
 //#define END_CUR "D"
 
-#define START_CUR "DOGE"
-#define END_CUR "USD"
+#define START_CUR "RDD"
+#define END_CUR "BTC"
 
 int main(int argc, const char * argv[])
 {
     std::cout << "Program Start" << std::endl;
     
-    ICryptoCurrencySourceParser *source_parser;
-    //ICryptoCurrencySourceParser *secondary_source_parser;
+    std::unique_ptr<ICryptoCurrencySourceParser> source_parser;
+    //std::unique_ptr<ICryptoCurrencySourceParser> secondary_source_parser;
     
-    //secondary_source_parser = new CryptsyCurrencySource();
-//        source_parser = new StaticCurrencySource();
-    source_parser = new PreludeIOCurrencySource();
+    //source_parser = std::unique_ptr<ICryptoCurrencySourceParser>( new CryptsyCurrencySource() );
+    //source_parser = std::unique_ptr<ICryptoCurrencySourceParser>( new StaticCurrencySource() );
+    source_parser = std::unique_ptr<ICryptoCurrencySourceParser>( new PreludeIOCurrencySource() );
     
     CryptoCurrencyGraph graph = CryptoCurrencyGraph(0.01);
     
@@ -44,16 +45,29 @@ int main(int argc, const char * argv[])
     double best = graph.getBestConversionCost(START_CUR, END_CUR);
     double simple =graph.getSimpleConversionCost(START_CUR, END_CUR);
     
-    double start_currency = 15000;
+    double start_currency = 50000;
     
     std::cout << std::setprecision(10);
     std::cout << std::fixed;
     
-    std::cout << "Best Possible Conversion: " << best << " :: " <<start_currency << "->" << (start_currency*best) << std::endl;
-    std::cout << "Simple Conversion: " << simple << " :: " <<start_currency << "->" << (start_currency*simple) << std::endl;
+    std::cout   << "Best Possible Conversion: "
+                << best
+                << " :: "
+                << start_currency
+                << "->"
+                << (start_currency*best)
+                << std::endl;
     
-    delete source_parser;
-    //delete secondary_source_parser;
+    std::cout   << "Simple Conversion: "
+                << simple
+                << " :: "
+                << start_currency
+                << "->"
+                << (start_currency*simple)
+                << std::endl;
+    
+    source_parser.reset();
+    //secondary_source_parser.reset();
     
     return 0;
 }

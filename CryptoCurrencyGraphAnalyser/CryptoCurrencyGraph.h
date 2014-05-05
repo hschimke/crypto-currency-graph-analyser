@@ -19,6 +19,7 @@
 #include <vector>
 #include <tuple>
 #include <limits>
+#include <memory>
 
 #define CRYPTO_CURRENCY_GRAPH_STRING_DELIMITER " "
 
@@ -34,9 +35,9 @@ public:
     virtual double getBestConversionCost(std::string start, std::string end);
     
 private:
-    std::map<std::string, CryptoCurrencyGraphNode*> data_set;
-    CryptoCurrencyGraphNode& getOrAddNodeByName( std::string node_name);
-    void recurisveGraphExamination( CryptoCurrencyGraphNode& position, CryptoCurrencyGraphNode& target, std::string path, std::vector<std::tuple<std::string, double>>& collected_paths );
+    std::map<std::string, std::shared_ptr<CryptoCurrencyGraphNode>> data_set;
+    std::shared_ptr<CryptoCurrencyGraphNode> getOrAddNodeByName( std::string node_name);
+    void recurisveGraphExamination( std::shared_ptr<CryptoCurrencyGraphNode> position, std::shared_ptr<CryptoCurrencyGraphNode> target, std::string path, std::vector<std::tuple<std::string, double>>& collected_paths );
     double transaction_fee;
 };
 

@@ -8,7 +8,13 @@
 
 #include "PreludeIOCurrencySource.h"
 
-PreludeIOCurrencySource::PreludeIOCurrencySource(){}
+PreludeIOCurrencySource::PreludeIOCurrencySource(){
+    this->include_usd_endpoints = true;
+}
+
+PreludeIOCurrencySource::PreludeIOCurrencySource(bool include_usd_endpoints){
+    this->include_usd_endpoints = include_usd_endpoints;
+}
 
 PreludeIOCurrencySource::~PreludeIOCurrencySource(){}
 
@@ -18,13 +24,16 @@ void PreludeIOCurrencySource::parseSource(CryptoCurrencyGraph &graph){
 
 void PreludeIOCurrencySource::parseSource(CryptoCurrencyGraph &graph, std::string name_prefix){
     std::string btc_data = this->getBTCStringData();
-    std::string usd_data = this->getUSDStringData();
     
     // Parse BTC Pairings
     addPairingsFromJSON(graph, btc_data, name_prefix);
     
-    // Parse USD Pairings
-    addPairingsFromJSON(graph, usd_data, name_prefix);
+    if (this->include_usd_endpoints) {
+        std::string usd_data = this->getUSDStringData();
+        
+        // Parse USD Pairings
+        addPairingsFromJSON(graph, usd_data, name_prefix);
+    }
     
     return;
 }

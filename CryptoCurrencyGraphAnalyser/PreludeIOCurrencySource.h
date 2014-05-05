@@ -25,6 +25,7 @@ class PreludeIOCurrencySource : public ICryptoCurrencySourceParser, public Curre
 public:
     virtual ~PreludeIOCurrencySource();
     PreludeIOCurrencySource();
+    PreludeIOCurrencySource(bool include_usd_endpoints);
     virtual void parseSource(CryptoCurrencyGraph &graph);
     virtual void parseSource(CryptoCurrencyGraph &graph, std::string name_prefix);
 private:
@@ -36,6 +37,8 @@ private:
     
     static size_t curlWriter(char *data, size_t size, size_t nmemb, std::string *buffer);
     void addPairingsFromJSON( CryptoCurrencyGraph& graph, std::string data, std::string name_prefix );
+    
+    bool include_usd_endpoints;
 };
 
 #endif /* defined(__CryptoCurrencyGraphAnalyser__PreludeIOCurrencySource__) */
