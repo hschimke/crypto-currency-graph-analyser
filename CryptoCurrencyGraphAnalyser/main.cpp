@@ -24,16 +24,18 @@
 #define START_CUR "RDD"
 #define END_CUR "BTC"
 
+typedef std::unique_ptr<ICryptoCurrencySourceParser> ICryptoCurrencySourceParserUPtr;
+
 int main(int argc, const char * argv[])
 {
     std::cout << "Program Start" << std::endl;
     
-    std::unique_ptr<ICryptoCurrencySourceParser> source_parser;
-    //std::unique_ptr<ICryptoCurrencySourceParser> secondary_source_parser;
+    ICryptoCurrencySourceParserUPtr source_parser;
+    //ICryptoCurrencySourceParserUPtr secondary_source_parser;
     
-    //source_parser = std::unique_ptr<ICryptoCurrencySourceParser>( new CryptsyCurrencySource() );
-    //source_parser = std::unique_ptr<ICryptoCurrencySourceParser>( new StaticCurrencySource() );
-    source_parser = std::unique_ptr<ICryptoCurrencySourceParser>( new PreludeIOCurrencySource() );
+    //source_parser = ICryptoCurrencySourceParserUPtr( new CryptsyCurrencySource() );
+    //source_parser = ICryptoCurrencySourceParserUPtr( new StaticCurrencySource() );
+    source_parser = ICryptoCurrencySourceParserUPtr( new PreludeIOCurrencySource() );
     
     CryptoCurrencyGraph graph = CryptoCurrencyGraph(0.01);
     

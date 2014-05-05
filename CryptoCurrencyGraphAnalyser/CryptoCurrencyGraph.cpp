@@ -9,24 +9,24 @@
 #include "CryptoCurrencyGraph.h"
 
 CryptoCurrencyGraph::CryptoCurrencyGraph(){
-    this->data_set = std::map<std::string, std::shared_ptr<CryptoCurrencyGraphNode>>();
+    this->data_set = std::map<std::string, CryptoCurrencyGraphNodeSPtr>();
     this->transaction_fee = 0;
 }
 
 CryptoCurrencyGraph::CryptoCurrencyGraph(double tf){
-    this->data_set = std::map<std::string, std::shared_ptr<CryptoCurrencyGraphNode>>();
+    this->data_set = std::map<std::string, CryptoCurrencyGraphNodeSPtr>();
     this->transaction_fee = tf;
 }
 
 CryptoCurrencyGraph::~CryptoCurrencyGraph(){
     std::for_each(this->data_set.begin(), this->data_set.end(),
-                  [](std::pair<std::string, std::shared_ptr<CryptoCurrencyGraphNode>> entry){
+                  [](std::pair<std::string, CryptoCurrencyGraphNodeSPtr> entry){
                       entry.second.reset();
                   });
 }
 
 bool CryptoCurrencyGraph::addNode(std::string node_name){
-    std::shared_ptr<CryptoCurrencyGraphNode> node = this->getOrAddNodeByName(node_name);
+    CryptoCurrencyGraphNodeSPtr node = this->getOrAddNodeByName(node_name);
     
     if(this->data_set.find(node->getName()) == this->data_set.end()){
         this->data_set[node->getName()] = node;
@@ -35,9 +35,9 @@ bool CryptoCurrencyGraph::addNode(std::string node_name){
     return true;
 }
 
-std::shared_ptr<CryptoCurrencyGraphNode> CryptoCurrencyGraph::getOrAddNodeByName(std::string node_name){
+CryptoCurrencyGraphNodeSPtr CryptoCurrencyGraph::getOrAddNodeByName(std::string node_name){
     if(this->data_set.find(node_name) == this->data_set.end()){
-        std::shared_ptr<CryptoCurrencyGraphNode> node = std::shared_ptr<CryptoCurrencyGraphNode>(new CryptoCurrencyGraphNode(node_name));
+        CryptoCurrencyGraphNodeSPtr node = CryptoCurrencyGraphNodeSPtr(new CryptoCurrencyGraphNode(node_name));
         this->data_set[node_name] = node;
     }
     
@@ -54,7 +54,7 @@ double CryptoCurrencyGraph::getBestConversionCost(std::string start, std::string
     std::string best_path;
     
     for(std::tuple<std::string, double> &t:paths){
-        std::cout << std::get<0>(t) << " :: " << std::get<1>(t) << std::endl;
+        std::cout << std::get<0>(t) << CRYPTO_CURRENCY_GRAPH_COST_OUTPUT_STRING_SEP << std::get<1>(t) << std::endl;
         
         if ((best < std::get<1>(t)) && (std::get<1>(t) != 0)) {
             best = std::get<1>(t);
@@ -62,12 +62,14 @@ double CryptoCurrencyGraph::getBestConversionCost(std::string start, std::string
         }
     }
     
-    std::cout <<"Found best path: " << best_path << " :: " << best << std::endl;
+    std::cout <<"Found best path: " << best_path << CRYPTO_CURRENCY_GRAPH_COST_OUTPUT_STRING_SEP << best << std::endl;
     
     return best;
 }
 
-void CryptoCurrencyGraph::recurisveGraphExamination(std::shared_ptr<CryptoCurrencyGraphNode> position, std::shared_ptr<CryptoCurrencyGraphNode> target, std::string path,
+void CryptoCurrencyGraph::recurisveGraphExamination(CryptoCurrencyGraphNodeSPtr position,
+                                                    CryptoCurrencyGraphNodeSPtr target,
+                                                    std::string path,
                                                     std::vector<std::tuple<std::string, double>>& collected_paths){
     if (position->getName() == target->getName()) {
         // Path is good, save and move on
@@ -83,7 +85,7 @@ void CryptoCurrencyGraph::recurisveGraphExamination(std::shared_ptr<CryptoCurren
         for(std::string &s : tokens){
             if( !stp.empty()){
                 start = start * getSimpleConversionCost(stp, s);
-                path_builder << "->";
+                path_builder << CRYPTO_CURRENCY_GRAPH_OUTPUT_STRING_LINKER;
             }
             stp = s;
             
@@ -98,7 +100,7 @@ void CryptoCurrencyGraph::recurisveGraphExamination(std::shared_ptr<CryptoCurren
     }else{
         // Path is incomplete, keep going
         for (std::pair<const std::string,double>& pair: position->links) {
-            std::shared_ptr<CryptoCurrencyGraphNode> nd = getOrAddNodeByName(pair.first);
+            CryptoCurrencyGraphNodeSPtr nd = getOrAddNodeByName(pair.first);
             recurisveGraphExamination(nd, target, path + CRYPTO_CURRENCY_GRAPH_STRING_DELIMITER + position->getName(), collected_paths);
         }
         return;
@@ -106,9 +108,12 @@ void CryptoCurrencyGraph::recurisveGraphExamination(std::shared_ptr<CryptoCurren
 }
 
 double CryptoCurrencyGraph::getSimpleConversionCost(std::string start, std::string end){
-    std::shared_ptr<CryptoCurrencyGraphNode> start_node = this->getOrAddNodeByName(start);
+    CryptoCurrencyGraphNodeSPtr start_node = this->getOrAddNodeByName(start);
     double link_cost = start_node->getLinkCost(end);
-    return link_cost + (link_cost * this->transaction_fee);
+    
+    // Should this be + or -?  I'm not certain since I haven't played out the conversion correctly
+    // in my head.
+    return link_cost - (link_cost * this->transaction_fee);
 }
 
 bool CryptoCurrencyGraph::addLink(std::string source_node_name, std::string target_node_name, double cost){
