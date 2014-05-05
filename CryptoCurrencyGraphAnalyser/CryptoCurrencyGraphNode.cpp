@@ -25,11 +25,11 @@ std::string CryptoCurrencyGraphNode::getName(){
     return this->currency_name;
 }
 
-void CryptoCurrencyGraphNode::addLink(std::string name, double cost){
-    this->links[name]=cost;
+void CryptoCurrencyGraphNode::addLink(std::string name, double rate){
+    this->links[name]=rate;
 }
 
-double CryptoCurrencyGraphNode::getLinkCost(std::string name){
+double CryptoCurrencyGraphNode::getLinkRate(std::string name){
     double return_value;
     
     if(this->links.find(name) == this->links.end()){

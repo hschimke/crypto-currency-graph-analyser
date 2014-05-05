@@ -35,9 +35,9 @@ int main(int argc, const char * argv[])
     ICryptoCurrencySourceParserUPtr source_parser;
     //ICryptoCurrencySourceParserUPtr secondary_source_parser;
     
-    //source_parser = ICryptoCurrencySourceParserUPtr( new CryptsyCurrencySource() );
+    source_parser = ICryptoCurrencySourceParserUPtr( new CryptsyCurrencySource() );
     //source_parser = ICryptoCurrencySourceParserUPtr( new StaticCurrencySource() );
-    source_parser = ICryptoCurrencySourceParserUPtr( new PreludeIOCurrencySource() );
+    //source_parser = ICryptoCurrencySourceParserUPtr( new PreludeIOCurrencySource() );
     
     CryptoCurrencyGraph graph = CryptoCurrencyGraph(CURRENCY_CONVERSION_FEE);
     
@@ -46,8 +46,8 @@ int main(int argc, const char * argv[])
     
     source_parser->parseSource(graph);
     
-    double best = graph.getBestConversionCost(START_CUR, END_CUR);
-    double simple =graph.getSimpleConversionCost(START_CUR, END_CUR);
+    double best = graph.getBestConversionRate(START_CUR, END_CUR);
+    double simple =graph.getSimpleConversionRate(START_CUR, END_CUR);
     
     double start_currency = START_CURRENCY_QUANTITY;
     

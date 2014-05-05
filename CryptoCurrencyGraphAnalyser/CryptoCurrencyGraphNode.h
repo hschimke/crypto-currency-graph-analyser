@@ -18,8 +18,8 @@ public:
     CryptoCurrencyGraphNode();
     std::string getName();
     virtual ~CryptoCurrencyGraphNode();
-    void addLink(std::string name, double cost);
-    double getLinkCost( std::string name);
+    void addLink(std::string name, double rate);
+    double getLinkRate( std::string name);
     std::map<std::string, double> links;
 protected:
     std::string currency_name;

@@ -44,7 +44,7 @@ CryptoCurrencyGraphNodeSPtr CryptoCurrencyGraph::getOrAddNodeByName(std::string 
     return this->data_set[node_name];
 }
 
-double CryptoCurrencyGraph::getBestConversionCost(std::string start, std::string end){
+double CryptoCurrencyGraph::getBestConversionRate(std::string start, std::string end){
     
     std::vector<std::tuple<std::string, double>> paths = std::vector<std::tuple<std::string, double>>();
     
@@ -84,7 +84,7 @@ void CryptoCurrencyGraph::recurisveGraphExamination(CryptoCurrencyGraphNodeSPtr 
         double start = 1.0;
         for(std::string &s : tokens){
             if( !stp.empty()){
-                start = start * getSimpleConversionCost(stp, s);
+                start = start * getSimpleConversionRate(stp, s);
                 path_builder << CRYPTO_CURRENCY_GRAPH_OUTPUT_STRING_LINKER;
             }
             stp = s;
@@ -107,17 +107,17 @@ void CryptoCurrencyGraph::recurisveGraphExamination(CryptoCurrencyGraphNodeSPtr 
     }
 }
 
-double CryptoCurrencyGraph::getSimpleConversionCost(std::string start, std::string end){
+double CryptoCurrencyGraph::getSimpleConversionRate(std::string start, std::string end){
     CryptoCurrencyGraphNodeSPtr start_node = this->getOrAddNodeByName(start);
-    double link_cost = start_node->getLinkCost(end);
+    double link_rate = start_node->getLinkRate(end);
     
     // Should this be + or -?  I'm not certain since I haven't played out the conversion correctly
     // in my head.
-    return link_cost - (link_cost * this->transaction_fee);
+    return link_rate - (link_rate * this->transaction_fee);
 }
 
-void CryptoCurrencyGraph::addLink(std::string source_node_name, std::string target_node_name, double cost){
-    this->getOrAddNodeByName(source_node_name)->addLink(target_node_name, cost);
+void CryptoCurrencyGraph::addLink(std::string source_node_name, std::string target_node_name, double rate){
+    this->getOrAddNodeByName(source_node_name)->addLink(target_node_name, rate);
     
     return;
 }
